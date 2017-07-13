@@ -29,7 +29,7 @@
           .then(response => {
 //            get body data
             console.log(response.body)
-            alert(`login success! ${response.body}`)
+            alert(`login success!` + JSON.stringify(response))
 //            this.$set('retObj', response.body)
           }, response => {
 //            error callback
@@ -44,7 +44,7 @@
           .then(response => {
 //            get body data
             console.log(response.body)
-            alert(`logout success! ${response.body}`)
+            alert(`logout success!` + JSON.stringify(response))
 //            this.$set('retObj', response.body)
           }, response => {
 //            error callback

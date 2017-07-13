@@ -28,7 +28,10 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': 'localhost:8000',
+      '/api': {
+        target: 'http://localhost:8000',
+        secure: false
+      },
       '/wss': {
         target: 'localhost:8880',
         ws: true
