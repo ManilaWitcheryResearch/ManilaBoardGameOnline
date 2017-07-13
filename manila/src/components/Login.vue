@@ -1,9 +1,8 @@
 <template>
-  <div id="login" class="login">
+  <div class="hello">
     <h1>{{ displayName }}</h1>
-    <label>USERID：<input v-model="userId"/></label>
-    <input type="button" value="LOGIN" v-on:click="login">
-    <input type="button" value="LOGOUT" v-on:click="logout">
+    <label>昵称：<input v-model="displayName"/></label>
+    <input type="button" value="登录" v-on:click="login">
     <br/>
     <b>{{retObj}}</b>
   </div>
@@ -11,45 +10,29 @@
 
 <script>
   export default {
-    name: 'login',
+    name: 'hello',
     data () {
       return {
-        userId: 'Bejita',
         displayName: 'Bejita',
         retObj: 'what?',
-        loginApi: '/api/user/signin',
-        logoutApi: '/api/user/signout'
+        loginApi: 'http://lams.com/login'
       }
     },
     methods: {
       login () {
         console.log(this.loginApi)
         console.log(this)
-        this.$http.post(this.loginApi, {'params': {userId: this.userId}})
+        this.$http.get(this.loginApi, {'params': {displayName: this.displayName}})
           .then(response => {
 //            get body data
             console.log(response.body)
             alert(`login success! ${response.body}`)
 //            this.$set('retObj', response.body)
+            this.$router.push('/game_hall')
           }, response => {
 //            error callback
             console.log(response)
             alert("fuck, can't login! " + JSON.stringify(response))
-          })
-      },
-      logout () {
-        console.log(this.logoutApi)
-        console.log(this)
-        this.$http.post(this.logoutApi, {'params': {userId: this.userId}})
-          .then(response => {
-//            get body data
-            console.log(response.body)
-            alert(`logout success! ${response.body}`)
-//            this.$set('retObj', response.body)
-          }, response => {
-//            error callback
-            console.log(response)
-            alert("fuck, can't logout! " + JSON.stringify(response))
           })
       }
     }

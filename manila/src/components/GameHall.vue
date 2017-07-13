@@ -6,7 +6,13 @@
     <div v-for="(room, index) in rooms">
       <h2>room {{index}}</h2>
       <ul>
-        <li>{{room.playerSize}}/{{room.maxPlayerSize}} 人</li>
+        <li>{{room.player.length}}/{{room.maxPlayerSize}} 人</li>
+        <li>
+          <template v-for="(playerOne,index2) in room.player">
+            <template v-if="index2!=0">,</template>
+            {{playerOne.displayName}}
+          </template>
+        </li>
         <li><input type="button" value="坐下" v-on:click="enterRoom(index)"></li>
       </ul>
     </div>
@@ -14,24 +20,33 @@
 </template>
 
 <script>
+  const mockRoomData = {
+    playerSize: 4,
+    rooms: [{
+      maxPlayerSize: 5,
+      player: [
+        {displayName: '带鱼'}
+      ]
+    }, {
+      maxPlayerSize: 4,
+      player: [
+        {displayName: `爱撸`},
+        {displayName: `贝贝猫`},
+        {displayName: '蓝天'}
+      ]
+    }
+    ]
+  }
+
   export default {
     name: 'hello',
     data () {
-      return {
-        playerSize: 3,
-        rooms: [{
-          playerSize: 1,
-          maxPlayerSize: 5
-        }, {
-          playerSize: 3,
-          maxPlayerSize: 4
-        }
-        ]
-      }
+      return mockRoomData
     },
     methods: {
       enterRoom (index) {
-        alert(`其实还进不去${index}桌啦！`)
+//        alert(`其实还进不去${index}桌啦！`)
+        this.$router.push('/game_room')
       }
     }
   }
