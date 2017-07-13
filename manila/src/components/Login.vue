@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="login">
+  <div>
     <h1>{{ displayName }}</h1>
     <label>USERID：<input v-model="userId"/></label>
     <input type="button" value="LOGIN" v-on:click="login">
