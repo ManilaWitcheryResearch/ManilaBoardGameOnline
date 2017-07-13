@@ -25,7 +25,7 @@
       login () {
         console.log(this.loginApi)
         console.log(this)
-        this.$http.post(this.loginApi, {'params': {userId: this.userId}})
+        this.$http.post(this.loginApi, {userId: this.userId})
           .then(response => {
 //            get body data
             console.log(response.body)
@@ -40,7 +40,7 @@
       logout () {
         console.log(this.logoutApi)
         console.log(this)
-        this.$http.post(this.logoutApi, {'params': {userId: this.userId}})
+        this.$http.post(this.logoutApi, {userId: this.userId})
           .then(response => {
 //            get body data
             console.log(response.body)
