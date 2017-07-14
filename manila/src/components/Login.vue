@@ -30,7 +30,8 @@
 //            get body data
             console.log(response.body)
             alert(`login success!` + JSON.stringify(response))
-//            this.$set('retObj', response.body)
+            // this.$set('retObj', JSON.stringify(response))
+            this.retObj = JSON.stringify(response)
           }, response => {
 //            error callback
             console.log(response)
