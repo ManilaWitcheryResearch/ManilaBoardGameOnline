@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Login from '@/components/Login'
 import GameHall from '@/components/GameHall'
 import GameRoom from '@/components/GameRoom'
+import GamePlay from '@/components/GamePlay'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +28,11 @@ export default new Router({
       path: '/game_room',
       name: 'GameRoom',
       component: GameRoom
+    },
+    {
+      path: '/game_play',
+      name: 'GamePlay',
+      component: GamePlay
     }
   ]
 })
