@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>游戏大厅</h1>
-
+    <input type="button" value="REFRESH" @click="getHall">
     <h2>共有 {{playerSize}} 人坐着</h2>
     <div v-for="(room, index) in rooms">
       <h2>room {{index}}</h2>
@@ -21,6 +21,7 @@
 
 <script>
   const mockRoomData = {
+    getHallApi: '/api/room/getall',
     playerSize: 4,
     rooms: [{
       maxPlayerSize: 5,
@@ -46,8 +47,28 @@
     methods: {
       enterRoom (index) {
 //        alert(`其实还进不去${index}桌啦！`)
+        // this.getHall()
         this.$router.push('/game_room')
+      },
+      getHall () {
+        console.log(this.loginApi)
+        console.log(this)
+        this.$http.get(this.getHallApi, {})
+          .then(response => {
+//            get body data
+            console.log(response.body)
+            alert(`SUCCESS` + JSON.stringify(response))
+            // this.$set('retObj', JSON.stringify(response))
+            this.retObj = JSON.stringify(response)
+          }, response => {
+//            error callback
+            console.log(response)
+            alert('NOOOOO' + JSON.stringify(response))
+          })
       }
+    },
+    created: function () {
+      this.getHall()
     }
   }
 </script>
