@@ -23,7 +23,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8888,
+    port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -33,7 +33,7 @@ module.exports = {
         secure: false
       },
       '/wss': {
-        target: 'localhost:8880',
+        target: 'localhost:8888',
         ws: true
       }
     },
